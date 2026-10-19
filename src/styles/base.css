@@ -1,0 +1,15 @@
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--gl);z-index:90}
+h1,h2,h3{margin:0 0 .35em;letter-spacing:-.02em;font-weight:700}a{color:inherit;text-decoration:none}.mu{color:var(--mu);font-size:13px}
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.bg i{position:absolute;width:44vmax;height:44vmax;border-radius:50%;filter:blur(120px);opacity:.28;animation:drift 20s ease-in-out infinite alternate}
+.bg i:nth-child(1){background:var(--ac);left:-12vmax;top:-12vmax}.bg i:nth-child(2){background:var(--ac2);right:-14vmax;bottom:-16vmax;animation-delay:-9s}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;gap:4px;padding:10px 18px;background:var(--gl);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);overflow-x:auto;animation:dn .6s both}
+.logo{font-weight:800;font-size:18px;margin-right:auto;white-space:nowrap}.logo b{color:var(--ac)}
+nav.top a.l{padding:6px 12px;border-radius:99px;color:var(--mu);font-weight:600;font-size:13px;white-space:nowrap;transition:.2s}nav.top a.l.active,nav.top a.l:hover{background:var(--card);color:var(--tx)}
+main{max-width:1100px;margin:0 auto;padding:24px 18px 90px;animation:pg .5s cubic-bezier(.2,.8,.2,1)}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.row>.f0{flex:none}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.stat{font-size:30px;font-weight:800}.ico{font-size:28px;display:inline-block;animation:float 3.5s ease-in-out infinite}
+.center{text-align:center}.narrow{max-width:640px;margin:auto}.err{color:var(--sev-critical);font-size:13px;margin-top:10px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important}}
