@@ -1,15 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { apiUrl, getToken } from '../services/api';
+import { AlertApi } from '../services/endpoints';
+import { subscribeAlerts } from '../services/localStore';
 
-/** Subscribes to the Server-Sent-Events alert stream; EventSource reconnects automatically. */
+/** Delivers new alerts live (same tab or other tabs) and publishes a simulated alert every ~45 s. */
 export function useAlertStream(onAlert) {
   const cb = useRef(onAlert);
   cb.current = onAlert;
   useEffect(() => {
-    const t = getToken();
-    if (!t) return;
-    const es = new EventSource(`${apiUrl('/alerts/stream')}?access_token=${encodeURIComponent(t)}`);
-    es.addEventListener('alert', (e) => { try { cb.current(JSON.parse(e.data)); } catch { /* ignore */ } });
-    return () => es.close();
+    const off = subscribeAlerts((a) => cb.current(a));
+    const t = setInterval(() => { if (!document.hidden) AlertApi.simulate(); }, 45000);
+    return () => { off(); clearInterval(t); };
   }, []);
 }

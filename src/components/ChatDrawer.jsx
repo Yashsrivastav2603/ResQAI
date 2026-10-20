@@ -21,7 +21,7 @@ export default function ChatDrawer() {
     t = t.trim(); if (!t || busy) return;
     setMsgs((m) => [...m, { role: 'user', content: t }]); setText(''); setBusy(true);
     try { const r = await AssistantApi.chat(t); setMsgs((m) => [...m, r]); }
-    catch { setMsgs((m) => [...m, { role: 'assistant', content: 'Sorry, I could not reach the server. If you are in danger call 112.' }]); }
+    catch { setMsgs((m) => [...m, { role: 'assistant', content: 'Sorry, something went wrong. If you are in danger call 112.' }]); }
     finally { setBusy(false); }
   }
 
