@@ -10,7 +10,7 @@ export default function Navbar() {
   const { toggleTheme } = useUi();
   return (
     <nav className="top">
-      <Link className="logo" to="/">🌿 Resq<b>AI</b></Link>
+      <Link className="logo" to="/">🌿 SURVORA-<b>AI</b></Link>
       {user ? (
         <>
           {LINKS.map(([to, label]) => <NavLink key={to} className="l" to={to}>{label}</NavLink>)}
